@@ -1,9 +1,9 @@
-
-
+import React from "react";
+import RouteSwitch from "./RouteSwitch";
 function App() {
   return (
-    <div>
-      <h1>Hello!</h1>
+    <div className="container">
+      <RouteSwitch />
     </div>
   );
 }
