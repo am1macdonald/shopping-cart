@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import NavigationBar from "./components/Navbar";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
@@ -7,7 +7,7 @@ import Cart from "./components/Cart";
 const RouteSwitch = () => {
   return (
     <BrowserRouter>
-      <Navbar />
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
