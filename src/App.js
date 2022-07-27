@@ -1,10 +1,11 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import RouteSwitch from "./RouteSwitch";
 function App() {
   return (
-    <div className="container">
+    <Container className="app" data-testId="app">
       <RouteSwitch />
-    </div>
+    </Container>
   );
 }
 
