@@ -1,27 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
-function Navbar() {
+function NavigationBar() {
   return (
-    <div className="navbar">
-      <div className="navbar-inner">
-        <Link className="brand" to="/">
-          MTNFLK
-        </Link>
-        <ul className="nav">
-          <li className="active">
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li>
-            <Link to="/cart">Cart</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <Navbar collapseOnSelect expand="md" style={{backgroundColor: 'red'}} variant="light">
+      <Container>
+        <Navbar.Brand>MEGA LO MART</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <LinkContainer to="/">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Shop">
+              <Nav.Link>Shop</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Cart">
+              <Nav.Link>Cart</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default NavigationBar;
