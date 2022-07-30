@@ -14,9 +14,8 @@ describe("testing app: general", () => {
 describe("testing navigation bar", () => {
   it("renders", () => {
     render(<App />);
-
-    const navTitle = screen.getByText(/mega lo mart/i);
-    expect(navTitle).toBeInTheDocument();
+    const navTitle = screen.getByText(/^mega lo mart$/i);
+    expect(navTitle).toBeInTheDocument()
   });
 });
 
