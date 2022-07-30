@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./shop.module.scss";
 
 const generatePrice = () => {
-  return Math.random() * 100 + 20;
+  return Math.random().toFixed(2) * 100 + 20;
 };
 
 const fakeAPI = () => {
@@ -15,23 +15,41 @@ const fakeAPI = () => {
       price: generatePrice(),
     });
   }
-  console.log(products);
   return products;
 };
 
-const ItemTile = ({ title, image }) => {
+const ItemTile = ({ item, title, image, price, addToCart, updateQuantity }) => {
+  const [displayQuantity, setDisplayQuantity] = useState(false);
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    setDisplayQuantity(true);
+    addToCart({ ...item, quantity: 1 });
+  };
+
   return (
     <li className={`container ${styles.itemTile}`}>
       <img src={image} alt={title} className={styles.itemImg} />
       <h4>{title}</h4>
+      <p>${price}</p>
       <div>
-        <div className="hidden">
-          <label htmlFor="quantity"></label>
-          <input type="number" title="quantity" id="quantity" />
-        </div>
+        {displayQuantity && (
+          <div>
+            <label htmlFor="quantity">Qty:</label>
+            <input
+              onChange={(e) => updateQuantity({...item, quantity: parseInt(e.target.value)})}
+              type="number"
+              title="quantity"
+              id="quantity"
+              defaultValue={1}
+            />
+          </div>
+        )}
 
         <div>
-          <button>Add to Cart</button>
+          {!displayQuantity && (
+            <button onClick={handleAddToCart}>Add to Cart</button>
+          )}
           <button>Item Details</button>
         </div>
       </div>
@@ -39,7 +57,7 @@ const ItemTile = ({ title, image }) => {
   );
 };
 
-const Shop = () => {
+const Shop = (props) => {
   const [products, setProducts] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -59,14 +77,21 @@ const Shop = () => {
   }, []);
 
   const items = products.map((item) => (
-    <ItemTile key={item.id} title={item.title} image={item.images[0]} />
+    <ItemTile
+      key={item.id}
+      item={item}
+      title={item.title}
+      image={item.images[0]}
+      price={item.price}
+      addToCart={props.addToCart}
+      updateQuantity={props.updateQuantity}
+    />
   ));
 
   return (
     <div>
       <h1>Shop</h1>
       <div className="flex-row">
-
         <div className={`container ${styles.left}`}>
           <span>Filters</span>
         </div>
@@ -79,7 +104,6 @@ const Shop = () => {
           {loading && <div>Loading</div>}
           <ul className={styles.itemGrid}>{items}</ul>
         </div>
-
       </div>
     </div>
   );
