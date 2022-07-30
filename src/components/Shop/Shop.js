@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import style from "./shop.module.scss";
 
+const fakeAPI = () => {
+  const products = [];
+  for (let i = 0; i < 30; i++) {
+    products.push({ id: i, title: `product ${i}`, images: ["#"] });
+  }
+  console.log(products)
+  return products;
+};
+
 const ItemTile = ({ name, image }) => {
   return (
     <li>
       <img src={image} alt={name} className={style.itemImg} />
-      <h4>
-        {name}
-      </h4>
+      <h4>{name}</h4>
       <span>Add to cart</span>
     </li>
   );
@@ -20,13 +27,16 @@ const Shop = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((result) => {
-        setProducts(result.products);
-        setLoading(false);
-        console.log(result.products);
-      });
+    // fetch("https://dummyjson.com/products")
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    // setProducts(result.products);
+    // setLoading(false);
+    // console.log(result.products);
+    //   throw new Error("fake API active");
+    // })
+    setProducts(fakeAPI());
+    setLoading(false);
   }, []);
 
   const items = products.map((item) => (
