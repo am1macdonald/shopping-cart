@@ -12,15 +12,28 @@ function App() {
     setShoppingCart([...shoppingCart, { ...item, quantity: 1 }]);
   };
 
-  const updateQuantity = useCallback((item) => {
+  const updateQuantity = useCallback(
+    (item) => {
+      setShoppingCart(
+        shoppingCart.map((itemInCart) => {
+          if (item.id === itemInCart.id) {
+            return item;
+          } else return itemInCart;
+        })
+      );
+    },
+    [shoppingCart]
+  );
+
+  const removeItem = (item) => {
     setShoppingCart(
-      shoppingCart.map((itemInCart) => {
-        if (item.id === itemInCart.id) {
-          return item;
-        } else return itemInCart;
+      shoppingCart.filter((itemInCart) => {
+        if (itemInCart.id !== item.id) {
+          return itemInCart;
+        }
       })
     );
-  }, [shoppingCart]);
+  };
 
   useEffect(() => {
     console.log(shoppingCart);
@@ -32,7 +45,16 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop addToCart={addToCart} updateQuantity={updateQuantity} />} />
+          <Route
+            path="/shop"
+            element={
+              <Shop
+                addToCart={addToCart}
+                updateQuantity={updateQuantity}
+                removeItem={removeItem}
+              />
+            }
+          />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
