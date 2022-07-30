@@ -1,21 +1,40 @@
 import React, { useEffect, useState } from "react";
-import style from "./shop.module.scss";
+import styles from "./shop.module.scss";
+
+const generatePrice = () => {
+  return Math.random() * 100 + 20;
+};
 
 const fakeAPI = () => {
   const products = [];
   for (let i = 0; i < 30; i++) {
-    products.push({ id: i, title: `product ${i}`, images: ["#"] });
+    products.push({
+      id: i,
+      title: `product ${i}`,
+      images: ["#"],
+      price: generatePrice(),
+    });
   }
-  console.log(products)
+  console.log(products);
   return products;
 };
 
-const ItemTile = ({ name, image }) => {
+const ItemTile = ({ title, image }) => {
   return (
-    <li>
-      <img src={image} alt={name} className={style.itemImg} />
-      <h4>{name}</h4>
-      <span>Add to cart</span>
+    <li className={`container ${styles.itemTile}`}>
+      <img src={image} alt={title} className={styles.itemImg} />
+      <h4>{title}</h4>
+      <div>
+        <div className="hidden">
+          <label htmlFor="quantity"></label>
+          <input type="number" title="quantity" id="quantity" />
+        </div>
+
+        <div>
+          <button>Add to Cart</button>
+          <button>Item Details</button>
+        </div>
+      </div>
     </li>
   );
 };
@@ -40,22 +59,27 @@ const Shop = () => {
   }, []);
 
   const items = products.map((item) => (
-    <ItemTile key={item.id} name={item.title} image={item.images[0]} />
+    <ItemTile key={item.id} title={item.title} image={item.images[0]} />
   ));
 
   return (
     <div>
       <h1>Shop</h1>
-      <div>
-        <span>sorter & pages</span>
-        <div>
-          <div>filters</div>
-          <div>
-            <h1></h1>
-            {loading && <div>Loading</div>}
-            <ul>{items}</ul>
-          </div>
+      <div className="flex-row">
+
+        <div className={`container ${styles.left}`}>
+          <span>Filters</span>
         </div>
+
+        <div className={`container ${styles.right}`}>
+          <span className="flex-row">
+            <h1>Products</h1>
+            <p>sorting dropdown</p>
+          </span>
+          {loading && <div>Loading</div>}
+          <ul className={styles.itemGrid}>{items}</ul>
+        </div>
+
       </div>
     </div>
   );

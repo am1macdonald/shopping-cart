@@ -1,4 +1,25 @@
+.itemGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 2vmin;
+  max-width: 80vw;
+}
+
+.itemTile {
+  background-color: bisque;
+  width: auto;
+  padding: 2vmin;
+}
+
 .itemImg {
   max-width: 20vw;
   height: auto;
+}
+
+.right {
+  width: 80vw;
+}
+
+.left {
+  width: 15vw;
 }
