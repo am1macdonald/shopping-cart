@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="flex-row">
       <div>
         <span>MEGA LO MART</span>
-        <ul>
+      </div>
+      <div>
+        <ul className="flex-row">
           <li>
             <Link to="/">Home</Link>
           </li>

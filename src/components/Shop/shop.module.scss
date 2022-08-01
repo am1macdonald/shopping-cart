@@ -12,8 +12,12 @@
 }
 
 .itemImg {
-  max-width: 20vw;
-  height: auto;
+}
+
+.imageContainer {
+  overflow: hidden;
+  height: 30vh;
+  width: 20vw;
 }
 
 .right {
