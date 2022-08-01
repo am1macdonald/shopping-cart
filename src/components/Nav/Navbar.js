@@ -1,22 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({totalItems}) {
+
   return (
     <nav className="flex-row">
-      <div>
+      <div className="brand">
         <span>MEGA LO MART</span>
       </div>
       <div>
         <ul className="flex-row">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Home*</Link>
           </li>
           <li>
-            <Link to="/shop">Shop</Link>
+            <Link to="/shop">Shop*</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Cart*{totalItems > 0 && <sup>({totalItems})</sup>}</Link>
           </li>
         </ul>
       </div>
