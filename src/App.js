@@ -6,10 +6,14 @@ import Shop from "./components/Shop/Shop";
 import Cart from "./components/Cart/Cart";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState({});
+
+  const [products, setProducts] = useState([]);
+
+  const [loading, setLoading] = useState(false);
 
   const addToCart = (item) => {
-    setShoppingCart([...shoppingCart, { ...item, quantity: 1 }]);
+    setShoppingCart([...shoppingCart, { ...item.id, quantity: 1 }]);
   };
 
   const updateQuantity = useCallback(
@@ -36,8 +40,17 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(shoppingCart);
-  });
+    setLoading(true);
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((result) => {
+        setProducts(result.products);
+        setLoading(false);
+        console.log(result.products);
+      });
+    // setProducts(fakeAPI());
+    // setLoading(false);
+  }, []);
 
   return (
     <div data-testid="app" className="app">
@@ -52,6 +65,9 @@ function App() {
                 addToCart={addToCart}
                 updateQuantity={updateQuantity}
                 removeItem={removeItem}
+                shoppingCart={shoppingCart}
+                products={products}
+                loading={loading}
               />
             }
           />

@@ -1,32 +1,33 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./shop.module.scss";
 
-const generatePrice = () => {
-  return Math.random().toFixed(2) * 100 + 20;
-};
+// const generatePrice = () => {
+//   return Math.random().toFixed(2) * 100 + 20;
+// };
 
-const fakeAPI = () => {
-  const products = [];
-  for (let i = 0; i < 30; i++) {
-    products.push({
-      id: i,
-      title: `product ${i}`,
-      images: ["#"],
-      price: generatePrice(),
-    });
-  }
-  return products;
-};
+// const fakeAPI = () => {
+//   const products = [];
+//   for (let i = 0; i < 30; i++) {
+//     products.push({
+//       id: i,
+//       title: `product ${i}`,
+//       images: ["#"],
+//       price: generatePrice(),
+//     });
+//   }
+//   return products;
+// };
 
 const ItemTile = ({
   item,
   id,
   title,
-  image,
+  thumbnail,
   price,
   addToCart,
   updateQuantity,
   removeItem,
+  shoppingCart,
 }) => {
   const [displayQuantity, setDisplayQuantity] = useState(false);
 
@@ -51,7 +52,9 @@ const ItemTile = ({
 
   return (
     <li className={`container ${styles.itemTile}`}>
-      <img src={image} alt={title} className={styles.itemImg} />
+      <div className={styles.imageContainer}>
+        <img src={thumbnail} alt={title} className={styles.itemImg} />
+      </div>
       <h4>{title}</h4>
       <p>${price}</p>
       <div>
@@ -83,35 +86,19 @@ const ItemTile = ({
 };
 
 const Shop = (props) => {
-  const [products, setProducts] = useState([]);
-
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    // fetch("https://dummyjson.com/products")
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    // setProducts(result.products);
-    // setLoading(false);
-    // console.log(result.products);
-    //   throw new Error("fake API active");
-    // })
-    setProducts(fakeAPI());
-    setLoading(false);
-  }, []);
-
-  const items = products.map((item) => (
+  const items = props.products.map((item) => (
     <ItemTile
       key={item.id}
       id={item.id}
       item={item}
       title={item.title}
-      image={item.images[0]}
+      thumbnail={item.thumbnail}
       price={item.price}
       addToCart={props.addToCart}
       updateQuantity={props.updateQuantity}
       removeItem={props.removeItem}
+      shoppingCart={props.shoppingCart}
+      products={props.products}
     />
   ));
 
@@ -128,8 +115,8 @@ const Shop = (props) => {
             <h1>Products</h1>
             <p>sorting dropdown</p>
           </span>
-          {loading && <div>Loading</div>}
-          <ul className={styles.itemGrid}>{items}</ul>
+          {props.loading && <div>Loading</div>}
+          {!props.loading && <ul className={styles.itemGrid}>{items}</ul>}
         </div>
       </div>
     </div>
