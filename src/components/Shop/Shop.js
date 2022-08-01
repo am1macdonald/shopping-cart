@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./shop.module.scss";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 // const generatePrice = () => {
 //   return Math.random().toFixed(2) * 100 + 20;
@@ -52,7 +54,7 @@ const ItemTile = ({
 
   return (
     <li className={`container ${styles.itemTile}`}>
-      <div className={styles.imageContainer}>
+      <div className={`container ${styles.imageContainer}`}>
         <img src={thumbnail} alt={title} className={styles.itemImg} />
       </div>
       <h4>{title}</h4>
@@ -103,9 +105,9 @@ const Shop = (props) => {
   ));
 
   return (
-    <div>
-      <h1>Shop</h1>
-      <div className="flex-row">
+    <div className="page">
+      <div className="flex-row space-between">
+
         <div className={`container ${styles.left}`}>
           <span>Filters</span>
         </div>
@@ -115,9 +117,15 @@ const Shop = (props) => {
             <h1>Products</h1>
             <p>sorting dropdown</p>
           </span>
+
           {props.loading && <div>Loading</div>}
-          {!props.loading && <ul className={styles.itemGrid}>{items}</ul>}
+          {!props.loading && (
+            <SimpleBar className={styles.simpleBar}>
+              <ul className={`${styles.itemGrid}`}>{items}</ul>
+            </SimpleBar>
+          )}
         </div>
+
       </div>
     </div>
   );
