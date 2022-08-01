@@ -6,7 +6,7 @@ import Shop from "./components/Shop/Shop";
 import Cart from "./components/Cart/Cart";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState({});
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   const [products, setProducts] = useState([]);
 
@@ -55,7 +55,7 @@ function App() {
   return (
     <div data-testid="app" className="app">
       <BrowserRouter>
-        <Navbar />
+        <Navbar totalItems={shoppingCart.length}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
