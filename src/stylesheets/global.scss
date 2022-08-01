@@ -1,6 +1,10 @@
 .app {
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../assets/MegaLo.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -23,8 +27,12 @@ nav {
   justify-content: space-between;
   padding: 1vh 1vw;
 
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0 0 black;
+
   span {
     font-size: clamp(1.5rem, 4vmin, 1.6rem);
+    font-family: "Courier New", Courier, monospace;
   }
 
   ul {

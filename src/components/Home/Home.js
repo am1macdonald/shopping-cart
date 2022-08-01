@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <div className="container">
       <h1>Welcome to Mega-Lo-Mart</h1>
-      <img src={heroImg} alt="Mego Lo Mart, Arlen Branch" />
       <blockquote>
         At Mega Lo Mart, you're shopping for the rest of your life.
       </blockquote>

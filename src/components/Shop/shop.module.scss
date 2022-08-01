@@ -6,18 +6,19 @@
 }
 
 .itemTile {
+  box-sizing: border-box;
   background-color: bisque;
   width: auto;
   padding: 2vmin;
 }
 
 .itemImg {
+  max-width: 100%;
 }
 
 .imageContainer {
-  overflow: hidden;
   height: 30vh;
-  width: 20vw;
+  width: 100%;
 }
 
 .right {
