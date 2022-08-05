@@ -74,7 +74,7 @@ nav {
     justify-content: space-around;
 
     li {
-      margin-right: 1vw;
+      margin-right: min(1vw, 15px);
 
       a {
         text-decoration: none;

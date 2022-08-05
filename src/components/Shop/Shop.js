@@ -1,5 +1,4 @@
 import styles from "./shop.module.scss";
-import ItemTile from "./ItemTile";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 

@@ -13,6 +13,20 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+  const [totalItems, setTotalItems] = useState();
+
+  const getTotalItems = useCallback(
+    (() => {
+      let total = 0;
+
+      for (let item of shoppingCart) {
+        total += item.quantity;
+      }
+      console.log(total);
+      return total;
+    }), [shoppingCart]
+  );
+
   const addToCart = (item) => {
     setShoppingCart([...shoppingCart, { ...item, quantity: 1 }]);
   };
@@ -36,13 +50,10 @@ function App() {
         if (itemInCart.id !== item.id) {
           return itemInCart;
         }
+        return null;
       })
     );
   };
-
-  useEffect(() => {
-    console.log(shoppingCart);
-  });
 
   useEffect(() => {
     setLoading(true);
@@ -51,18 +62,20 @@ function App() {
       .then((result) => {
         setProducts(result.products);
         setLoading(false);
-        console.log(result.products);
       });
     // setProducts(fakeAPI());
     // setLoading(false);
   }, []);
+
+  useEffect(() => {
+    setTotalItems(getTotalItems());
+  }, [shoppingCart, getTotalItems]);
 
   const items = products.map((item) => {
     let quantity = 0;
 
     for (let thing of shoppingCart) {
       if (thing.id === item.id) {
-        console.log(thing.quantity);
         quantity = thing.quantity;
       }
     }
@@ -88,7 +101,7 @@ function App() {
   return (
     <div data-testid="app" className="app">
       <BrowserRouter>
-        <Navbar totalItems={shoppingCart.length} />
+        <Navbar totalItems={totalItems} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
