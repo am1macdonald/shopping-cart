@@ -1,4 +1,6 @@
 $soft-black: rgba(0, 0, 0, 0.85);
+$off-white: #faf9f6;
+$clear: rgba(0, 0, 0, 0);
 
 * {
   box-sizing: border-box;
@@ -11,7 +13,7 @@ $soft-black: rgba(0, 0, 0, 0.85);
   font-family: "Courier New", Courier, monospace;
   color: $soft-black;
 
-  background-color: #faf9f6;
+  background-color: $off-white;
 }
 
 .page {
@@ -79,6 +81,16 @@ nav {
       }
     }
   }
+}
+
+button {
+  font-family: "Courier New", Courier, monospace;
+  color: rgba(165, 42, 42, 0.85);
+  font-size: 1.1rem;
+  border: none;
+  background-color: $clear;
+  padding: 1vw 1vh;
+  cursor: pointer;
 }
 
 nav::after {

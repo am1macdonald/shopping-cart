@@ -58,17 +58,17 @@ const ItemTile = ({
             />
             <div className={styles.buttonDiv}>
               <button type="submit" onClick={handleUpdate} form={`form-${id}`}>
-                update
+                update*
               </button>
-              <button>Item Details</button>
+              <button>item details*</button>
             </div>
           </form>
         )}
         {!displayQuantity && (
           <div>
-            <button onClick={handleAddToCart}>Add to Cart</button>
+            <button onClick={handleAddToCart}>add to cart*</button>
 
-            <button>Item Details</button>
+            <button>item details*</button>
           </div>
         )}
       </div>
