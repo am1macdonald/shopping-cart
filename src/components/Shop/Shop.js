@@ -1,5 +1,5 @@
 import styles from "./shop.module.scss";
-import ItemTile from './ItemTile';
+import ItemTile from "./ItemTile";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
@@ -23,16 +23,19 @@ import "simplebar/dist/simplebar.min.css";
 const Shop = (props) => {
   return (
     <div className="page">
-      <div className="flex-row space-between">
-
+      <div className={`flex-row space-between ${styles.shopFlex}`}>
         <div className={`container ${styles.left}`}>
           <span>Filters</span>
         </div>
 
         <div className={`container ${styles.right}`}>
           <span className="flex-row">
-            <h1>Products</h1>
-            <p>sorting dropdown</p>
+            <label htmlFor="sort">sort:</label>
+            <select name="sort" id="sort">
+              <option value="alphabetical">alphabetical</option>
+              <option value="price ↑">price ↑</option>
+              <option value="price ↓">price ↓</option>
+            </select>
           </span>
 
           {props.loading && <div>Loading</div>}
@@ -42,7 +45,6 @@ const Shop = (props) => {
             </SimpleBar>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 $soft-black: rgba(0, 0, 0, 0.85);
 $off-white: #faf9f6;
+$clear: rgba(0, 0, 0, 0);
 
 .simpleBar {
   height: 82vh;
@@ -9,7 +10,7 @@ $off-white: #faf9f6;
 
 .itemGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
   grid-gap: 2vmin;
   max-width: 100%;
 }
@@ -52,8 +53,45 @@ $off-white: #faf9f6;
 
 .right {
   width: 80vw;
+
+  span {
+    width: 90%;
+    padding-bottom: 2vh;
+
+    select {
+      margin-left: 2vw;
+
+      border: none;
+      background-color: $clear;
+    }
+  }
 }
 
 .left {
+  height: inherit;
+  flex-direction: column;
   width: 15vw;
+}
+
+@media only screen and (max-width: 690px) {
+  .itemTile {
+    max-height: 25vh;
+  }
+  .shopFlex {
+    flex-direction: column;
+  }
+
+  .left {
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+
+    margin-top: 1vh;
+  }
+  .right {
+    width: 100%;
+    span {
+      width: 100%;
+    }
+  }
 }
