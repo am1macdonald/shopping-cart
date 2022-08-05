@@ -46,16 +46,37 @@ const ItemTile = ({
       <div>
         {displayQuantity && (
           <form name={`form-${id}`} onSubmit={handleUpdate}>
-            <label htmlFor="quantity">Qty:</label>
-            <input
-              type="number"
-              title="quantity"
-              id="quantity"
-              defaultValue={quantity}
-              min={"0"}
-              max={item.stock}
-              ref={valueRef}
-            />
+            <div>
+              <label htmlFor="quantity">Qty:</label>
+              <button
+                htmlFor="quantity"
+                onClick={() => {
+                  let value = parseInt(valueRef.current.value) + 1;
+                  valueRef.current.value = value.toString();
+                }}
+              >
+                +
+              </button>
+              <input
+                className="no-spin"
+                type="number"
+                title="quantity"
+                id="quantity"
+                defaultValue={quantity}
+                min={"0"}
+                max={item.stock}
+                ref={valueRef}
+              />
+              <button
+                htmlFor="quantity"
+                onClick={() => {
+                  let value = parseInt(valueRef.current.value) - 1;
+                  valueRef.current.value = value.toString();
+                }}
+              >
+                -
+              </button>
+            </div>
             <div className={styles.buttonDiv}>
               <button type="submit" onClick={handleUpdate} form={`form-${id}`}>
                 update*

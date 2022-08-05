@@ -31,7 +31,6 @@ function App() {
     for (let item of shoppingCart) {
       total += item.quantity;
     }
-    console.log(total);
     return total;
   }, [shoppingCart]);
 
@@ -55,15 +54,12 @@ function App() {
       sorted.sort((a, b) => a.price - b.price);
       setProducts(sorted);
       setLoading(false);
-
       return;
     }
     if (type === "price desc") {
       sorted.sort((a, b) => b.price - a.price);
       setProducts(sorted);
       setLoading(false);
-
-      console.log(products)
       return;
     }
   };
