@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Nav/Navbar";
 import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
+import ItemTile from "./components/Shop/ItemTile";
 import Cart from "./components/Cart/Cart";
 
 function App() {
@@ -52,23 +53,36 @@ function App() {
     // setLoading(false);
   }, []);
 
+  const items = products.map((item) => (
+    <ItemTile
+      key={item.id}
+      id={item.id}
+      item={item}
+      title={item.title}
+      thumbnail={item.thumbnail}
+      price={item.price}
+      addToCart={addToCart}
+      updateQuantity={updateQuantity}
+      removeItem={removeItem}
+      shoppingCart={shoppingCart}
+      products={products}
+    />
+  ));
+
   return (
     <div data-testid="app" className="app">
       <BrowserRouter>
-        <Navbar totalItems={shoppingCart.length}/>
+        <Navbar totalItems={shoppingCart.length} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
             path="/shop"
             element={
               <Shop
-                addToCart={addToCart}
-                updateQuantity={updateQuantity}
-                removeItem={removeItem}
-                shoppingCart={shoppingCart}
-                products={products}
                 loading={loading}
-              />
+              >
+                {items}
+              </Shop>
             }
           />
           <Route path="/cart" element={<Cart />} />
