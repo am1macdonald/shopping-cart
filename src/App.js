@@ -14,7 +14,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const addToCart = (item) => {
-    setShoppingCart([...shoppingCart, { ...item.id, quantity: 1 }]);
+    setShoppingCart([...shoppingCart, { ...item, quantity: 1 }]);
   };
 
   const updateQuantity = useCallback(
@@ -41,6 +41,10 @@ function App() {
   };
 
   useEffect(() => {
+    console.log(shoppingCart);
+  });
+
+  useEffect(() => {
     setLoading(true);
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
@@ -53,21 +57,33 @@ function App() {
     // setLoading(false);
   }, []);
 
-  const items = products.map((item) => (
-    <ItemTile
-      key={item.id}
-      id={item.id}
-      item={item}
-      title={item.title}
-      thumbnail={item.thumbnail}
-      price={item.price}
-      addToCart={addToCart}
-      updateQuantity={updateQuantity}
-      removeItem={removeItem}
-      shoppingCart={shoppingCart}
-      products={products}
-    />
-  ));
+  const items = products.map((item) => {
+    let quantity = 0;
+
+    for (let thing of shoppingCart) {
+      if (thing.id === item.id) {
+        console.log(thing.quantity);
+        quantity = thing.quantity;
+      }
+    }
+
+    return (
+      <ItemTile
+        key={item.id}
+        id={item.id}
+        item={item}
+        title={item.title}
+        thumbnail={item.thumbnail}
+        price={item.price}
+        addToCart={addToCart}
+        updateQuantity={updateQuantity}
+        removeItem={removeItem}
+        shoppingCart={shoppingCart}
+        products={products}
+        quantity={quantity}
+      />
+    );
+  });
 
   return (
     <div data-testid="app" className="app">
@@ -77,13 +93,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/shop"
-            element={
-              <Shop
-                loading={loading}
-              >
-                {items}
-              </Shop>
-            }
+            element={<Shop loading={loading}>{items}</Shop>}
           />
           <Route path="/cart" element={<Cart />} />
         </Routes>

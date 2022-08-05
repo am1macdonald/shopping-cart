@@ -13,19 +13,28 @@
 }
 
 .itemTile {
+  justify-content: space-between;
   box-sizing: border-box;
-  background-color: bisque;
+  height: 30vh;
   width: auto;
   padding: 2vmin;
+
+  text-align: center;
+}
+
+.buttonDiv {
+  margin-top: 1vh;
 }
 
 .itemImg {
   max-width: 100%;
+  max-height: 60%;
 }
 
 .imageContainer {
-  height: 25vh;
+  justify-content: space-around;
   width: 100%;
+  height: auto;
   overflow: hidden;
   margin-bottom: 1vh;
 }

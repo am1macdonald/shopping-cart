@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./shop.module.scss";
 
-
 const ItemTile = ({
   item,
   id,
@@ -11,9 +10,11 @@ const ItemTile = ({
   addToCart,
   updateQuantity,
   removeItem,
-  shoppingCart,
+  quantity,
 }) => {
-  const [displayQuantity, setDisplayQuantity] = useState(false);
+  const [displayQuantity, setDisplayQuantity] = useState(
+    quantity ? true : false
+  );
 
   const valueRef = useRef(null);
 
@@ -38,9 +39,10 @@ const ItemTile = ({
     <li className={`container ${styles.itemTile}`}>
       <div className={`container ${styles.imageContainer}`}>
         <img src={thumbnail} alt={title} className={styles.itemImg} />
+        <h4>{title}</h4>
+        <p>${price}</p>
       </div>
-      <h4>{title}</h4>
-      <p>${price}</p>
+
       <div>
         {displayQuantity && (
           <form name={`form-${id}`} onSubmit={handleUpdate}>
@@ -49,24 +51,29 @@ const ItemTile = ({
               type="number"
               title="quantity"
               id="quantity"
-              defaultValue={1}
+              defaultValue={quantity}
+              min={"0"}
+              max={item.stock}
               ref={valueRef}
             />
-            <button type="submit" onClick={handleUpdate} form={`form-${id}`}>
-              update
-            </button>
+            <div className={styles.buttonDiv}>
+              <button type="submit" onClick={handleUpdate} form={`form-${id}`}>
+                update
+              </button>
+              <button>Item Details</button>
+            </div>
           </form>
         )}
-
-        <div>
-          {!displayQuantity && (
+        {!displayQuantity && (
+          <div>
             <button onClick={handleAddToCart}>Add to Cart</button>
-          )}
-          <button>Item Details</button>
-        </div>
+
+            <button>Item Details</button>
+          </div>
+        )}
       </div>
     </li>
   );
 };
 
-export default ItemTile
+export default ItemTile;
