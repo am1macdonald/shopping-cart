@@ -15,17 +15,58 @@ function App() {
 
   const [totalItems, setTotalItems] = useState();
 
-  const getTotalItems = useCallback(
-    (() => {
-      let total = 0;
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((result) => {
+        setProducts(result.products);
+        setLoading(false);
+      });
+  }, []);
 
-      for (let item of shoppingCart) {
-        total += item.quantity;
-      }
-      console.log(total);
-      return total;
-    }), [shoppingCart]
-  );
+  const getTotalItems = useCallback(() => {
+    let total = 0;
+
+    for (let item of shoppingCart) {
+      total += item.quantity;
+    }
+    console.log(total);
+    return total;
+  }, [shoppingCart]);
+
+  const sortHandler = (type) => {
+    setLoading(true);
+    let sorted = [...products];
+
+    if (type === "alphabetical") {
+      sorted.sort((a, b) => {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      setProducts(sorted);
+      setLoading(false);
+      return;
+    }
+    if (type === "price asc") {
+      sorted.sort((a, b) => a.price - b.price);
+      setProducts(sorted);
+      setLoading(false);
+
+      return;
+    }
+    if (type === "price desc") {
+      sorted.sort((a, b) => b.price - a.price);
+      setProducts(sorted);
+      setLoading(false);
+
+      console.log(products)
+      return;
+    }
+  };
 
   const addToCart = (item) => {
     setShoppingCart([...shoppingCart, { ...item, quantity: 1 }]);
@@ -54,18 +95,6 @@ function App() {
       })
     );
   };
-
-  useEffect(() => {
-    setLoading(true);
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((result) => {
-        setProducts(result.products);
-        setLoading(false);
-      });
-    // setProducts(fakeAPI());
-    // setLoading(false);
-  }, []);
 
   useEffect(() => {
     setTotalItems(getTotalItems());
@@ -106,7 +135,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/shop"
-            element={<Shop loading={loading}>{items}</Shop>}
+            element={
+              <Shop loading={loading} sort={sortHandler}>
+                {items}
+              </Shop>
+            }
           />
           <Route path="/cart" element={<Cart />} />
         </Routes>
