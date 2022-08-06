@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
 import ItemTile from "./components/Shop/ItemTile";
 import Cart from "./components/Cart/Cart";
+import CartItem from "./components/Cart/CartItem";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -34,8 +35,19 @@ function App() {
     return total;
   }, [shoppingCart]);
 
+  const getTotalCost = useCallback(() => {
+    let total = 0;
+
+    shoppingCart.forEach((item) => {
+      total +=
+        Math.round(item.price * (1 - item.discountPercentage / 100)) * item.quantity;
+    });
+
+    return total.toString();
+  }, [shoppingCart]);
+
   const sortHandler = (type) => {
-    if (type === 'select') {
+    if (type === "select") {
       return;
     }
 
@@ -100,7 +112,7 @@ function App() {
     setTotalItems(getTotalItems());
   }, [shoppingCart, getTotalItems]);
 
-  const items = products.map((item) => {
+  const allProducts = products.map((item) => {
     let quantity = 0;
 
     for (let thing of shoppingCart) {
@@ -127,6 +139,10 @@ function App() {
     );
   });
 
+  const productsInCart = shoppingCart.map((item) => (
+    <CartItem key={item.id} item={item} updateQuantity={updateQuantity} />
+  ));
+
   return (
     <div data-testid="app" className="app">
       <BrowserRouter>
@@ -137,11 +153,14 @@ function App() {
             path="/shop"
             element={
               <Shop loading={loading} sort={sortHandler}>
-                {items}
+                {allProducts}
               </Shop>
             }
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart totalCost={getTotalCost}>{productsInCart}</Cart>}
+          />
         </Routes>
       </BrowserRouter>
     </div>
