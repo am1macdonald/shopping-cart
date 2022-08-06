@@ -1,0 +1,42 @@
+$soft-black: rgba(0, 0, 0, 0.85);
+
+$softer-black: rgba(27, 22, 22, 0.5);
+$off-white: #faf9f6;
+$clear: rgba(0, 0, 0, 0);
+
+.shopPage {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.itemTile {
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: auto;
+  width: auto;
+  padding: 4vh;
+
+  border-bottom: solid $softer-black;
+}
+
+.numberDiv {
+  text-align: left;
+}
+
+.leftAlign {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.flexBottom {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cartImg {
+  max-width: max(250px, 30vw);
+  max-height: min(200px, 20vh);
+}
