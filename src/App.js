@@ -140,7 +140,7 @@ function App() {
   });
 
   const productsInCart = shoppingCart.map((item) => (
-    <CartItem key={item.id} item={item} updateQuantity={updateQuantity} />
+    <CartItem key={item.id} item={item} updateQuantity={updateQuantity} removeItem={removeItem} />
   ));
 
   return (

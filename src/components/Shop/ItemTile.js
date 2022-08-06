@@ -39,11 +39,11 @@ const ItemTile = ({
     <li className={`container ${styles.itemTile}`}>
       <div className={`container ${styles.imageContainer}`}>
         <img src={thumbnail} alt={title} className={styles.itemImg} />
-        <h4>{title}</h4>
-        <p>${price}</p>
       </div>
 
       <div>
+        <h4>{title}</h4>
+        <p>${price}</p>
         {displayQuantity && (
           <form name={`form-${id}`} onSubmit={handleUpdate}>
             <div>
@@ -66,6 +66,9 @@ const ItemTile = ({
                 min={"0"}
                 max={item.stock}
                 ref={valueRef}
+                onKeyDown={(e) => {
+                  e.preventDefault();
+                }}
               />
               <button
                 htmlFor="quantity"
@@ -78,9 +81,6 @@ const ItemTile = ({
               </button>
             </div>
             <div className={styles.buttonDiv}>
-              <button type="submit" onClick={handleUpdate} form={`form-${id}`}>
-                update*
-              </button>
               <button>item details*</button>
             </div>
           </form>
