@@ -2,12 +2,6 @@ $soft-black: rgba(0, 0, 0, 0.85);
 $off-white: #faf9f6;
 $clear: rgba(0, 0, 0, 0);
 
-.simpleBar {
-  height: 80vh;
-  width: 100%;
-  overflow: auto;
-}
-
 .itemGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
@@ -24,24 +18,10 @@ $clear: rgba(0, 0, 0, 0);
   padding: 2vmin;
 
   text-align: center;
-
-  input[type="number"] {
-    -webkit-appearance: none;
-    margin: 0;
-    border: none;
-    border-bottom: 2px solid $soft-black;
-    background-color: rgba(0, 0, 0, 0);
-    text-align: center;
-  }
 }
 
 .buttonDiv {
   margin-top: 1vh;
-}
-
-.itemImg {
-  max-width: 100%;
-  max-height: 60%;
 }
 
 .imageContainer {

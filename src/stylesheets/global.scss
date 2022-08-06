@@ -1,4 +1,5 @@
 $soft-black: rgba(0, 0, 0, 0.85);
+$softer-black: rgba(27, 22, 22, 0.5);
 $off-white: #faf9f6;
 $clear: rgba(0, 0, 0, 0);
 
@@ -41,7 +42,7 @@ $clear: rgba(0, 0, 0, 0);
 
 .flex-row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   max-width: 100vw;
 }
@@ -54,6 +55,10 @@ $clear: rgba(0, 0, 0, 0);
   margin-bottom: 1vh;
 }
 
+.border-bottom {
+  border-bottom: solid $softer-black;
+}
+
 .hero-image {
   padding: 5vmin;
   background-color: white;
@@ -61,6 +66,7 @@ $clear: rgba(0, 0, 0, 0);
 
   img {
     max-width: 100%;
+    max-height: auto;
   }
 }
 
@@ -76,6 +82,13 @@ $clear: rgba(0, 0, 0, 0);
 .no-spin {
   -moz-appearance: textfield !important;
 }
+
+.simple-bar {
+  height: 80vh;
+  width: 100%;
+  overflow: auto;
+}
+
 nav {
   justify-content: flex-start;
 
@@ -121,6 +134,18 @@ button {
 
 h3 {
   font-size: 1.23rem;
+}
+
+input[type="number"] {
+  -webkit-appearance: none;
+  margin: 0;
+  border: none;
+  border-bottom: 2px solid $soft-black;
+  background-color: rgba(0, 0, 0, 0);
+  text-align: center;
+
+  height: 1.1rem;
+  max-width: 5rem;
 }
 
 @media only screen and (max-width: 690px) {
