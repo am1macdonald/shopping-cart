@@ -21,7 +21,7 @@ $clear: rgba(0, 0, 0, 0);
   height: 90vh;
   max-width: 100vw;
 
-  padding: 0 2vw;
+  padding: 2vw;
 }
 
 .container {
@@ -60,6 +60,15 @@ $clear: rgba(0, 0, 0, 0);
 .brand {
   margin: 0 4vw 0 2vw;
 }
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.no-spin {
+  -moz-appearance: textfield !important;
+}
 nav {
   justify-content: flex-start;
 
@@ -84,6 +93,15 @@ nav {
   }
 }
 
+nav::after {
+  content: "";
+  position: absolute;
+  top: 10vh;
+  border-bottom: 3px solid $soft-black;
+  width: 90vw;
+  display: block;
+}
+
 button {
   font-family: "Courier New", Courier, monospace;
   color: rgba(165, 42, 42, 0.85);
@@ -92,15 +110,6 @@ button {
   background-color: $clear;
   padding: 1vw 1vh;
   cursor: pointer;
-}
-
-nav::after {
-  content: "";
-  position: absolute;
-  top: 10vh;
-  border-bottom: 3px solid $soft-black;
-  width: 90vw;
-  display: block;
 }
 
 h3 {
