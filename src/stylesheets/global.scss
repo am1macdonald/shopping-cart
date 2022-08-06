@@ -132,6 +132,10 @@ button {
   cursor: pointer;
 }
 
+img {
+  max-width: 100%;
+}
+
 h3 {
   font-size: 1.23rem;
 }
@@ -157,5 +161,8 @@ input[type="number"] {
     div {
       margin: 2vh 0 0 0;
     }
+  }
+  .simple-bar {
+    height: 68vh;
   }
 }
