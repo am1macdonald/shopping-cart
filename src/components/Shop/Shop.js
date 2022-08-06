@@ -30,7 +30,7 @@ const Shop = (props) => {
         <span className={`flex-row ${styles.span}`}>
           <label htmlFor="sort">sort:</label>
           <select name="sort" id="sort" onChange={handleChange}>
-            <option value="null">select</option>
+            <option value="select">select</option>
             <option value="alphabetical">alphabetical</option>
             <option value="price asc">price ↑</option>
             <option value="price desc">price ↓</option>

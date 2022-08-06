@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="container page">
 
-      <div className="flex-row">
+      <div className="flex-row home">
         <div className="container hero-image">
           <img src={heroImg} alt="Mego Lo Mart, Arlen Branch" />
         </div>

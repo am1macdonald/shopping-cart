@@ -35,6 +35,10 @@ function App() {
   }, [shoppingCart]);
 
   const sortHandler = (type) => {
+    if (type === 'select') {
+      return;
+    }
+
     setLoading(true);
     let sorted = [...products];
 
