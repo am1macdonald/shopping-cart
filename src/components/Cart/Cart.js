@@ -11,7 +11,7 @@ const Cart = ({ children, totalCost }) => {
           <h3>Your Cart</h3>
         </div>
 
-        <SimpleBar className="simple-bar">
+        <SimpleBar className={styles.simpleBar}>
           <ul className={`${styles.cart}`}>{children}</ul>
         </SimpleBar>
       </div>

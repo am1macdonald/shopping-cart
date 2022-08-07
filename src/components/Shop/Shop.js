@@ -39,7 +39,7 @@ const Shop = (props) => {
 
         {props.loading && <div>Loading</div>}
         {!props.loading && (
-          <SimpleBar className={`simple-bar`}>
+          <SimpleBar className={styles.simpleBar}>
             <ul className={`${styles.itemGrid}`}>{props.children}</ul>
           </SimpleBar>
         )}

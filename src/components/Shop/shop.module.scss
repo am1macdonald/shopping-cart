@@ -45,8 +45,14 @@ $clear: rgba(0, 0, 0, 0);
   }
 }
 
+.simpleBar {
+  height: 80vh;
+  width: 100%;
+  overflow: auto;
+}
+
 @media only screen and (max-width: 690px) {
   .itemTile {
-    max-height: 25vh;
+    max-height: auto;
   }
 }

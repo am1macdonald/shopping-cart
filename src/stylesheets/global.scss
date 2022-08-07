@@ -83,12 +83,6 @@ $clear: rgba(0, 0, 0, 0);
   -moz-appearance: textfield !important;
 }
 
-.simple-bar {
-  height: 80vh;
-  width: 100%;
-  overflow: auto;
-}
-
 nav {
   justify-content: flex-start;
 
@@ -161,8 +155,5 @@ input[type="number"] {
     div {
       margin: 2vh 0 0 0;
     }
-  }
-  .simple-bar {
-    height: 68vh;
   }
 }
