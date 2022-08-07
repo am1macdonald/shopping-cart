@@ -145,7 +145,7 @@ function App() {
 
   return (
     <div data-testid="app" className="app">
-      <BrowserRouter>
+      <BrowserRouter basename="/shopping-cart">
         <Navbar totalItems={totalItems} />
         <Routes>
           <Route path="/" element={<Home />} />
