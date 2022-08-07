@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function Navbar({totalItems}) {
-
+function Navbar({ totalItems }) {
   return (
     <nav className="flex-row">
       <div className="brand">
@@ -11,13 +10,34 @@ function Navbar({totalItems}) {
       <div>
         <ul className="flex-row">
           <li>
-            <Link to="/">Home*</Link>
+            <NavLink
+              to="/"
+              className={(isActive) =>
+                "nav-link" + (!isActive ? " unselected" : "")
+              }
+            >
+              Home*
+            </NavLink>
           </li>
           <li>
-            <Link to="/shop">Shop*</Link>
+            <NavLink
+              to="/shop"
+              className={(isActive) =>
+                "nav-link" + (!isActive ? " unselected" : "")
+              }
+            >
+              Shop*
+            </NavLink>
           </li>
           <li>
-            <Link to="/cart">Cart*{totalItems > 0 && <sup>({totalItems})</sup>}</Link>
+            <NavLink
+              to="/cart"
+              className={(isActive) =>
+                "nav-link" + (!isActive ? " unselected" : "")
+              }
+            >
+              Cart*{totalItems > 0 && <sup>({totalItems})</sup>}
+            </NavLink>
           </li>
         </ul>
       </div>
