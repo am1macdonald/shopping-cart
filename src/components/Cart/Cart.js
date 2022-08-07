@@ -8,7 +8,7 @@ const Cart = ({ children, totalCost }) => {
     <div className={`page ${styles.shopPage}`}>
       <div className={`container`}>
         <div className={`${styles.leftAlign} border-bottom`}>
-          <h3>Your Cart</h3>
+          <h3>your cart</h3>
         </div>
 
         <SimpleBar className={styles.simpleBar}>
@@ -16,7 +16,8 @@ const Cart = ({ children, totalCost }) => {
         </SimpleBar>
       </div>
       <div className={`container ${styles.flexBottom}`}>
-        <p>Total: ${totalCost()}</p>
+        <p>total: ${totalCost()}</p>
+        <button>checkout</button>
       </div>
     </div>
   );

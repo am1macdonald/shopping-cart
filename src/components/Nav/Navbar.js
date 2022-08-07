@@ -16,7 +16,7 @@ function Navbar({ totalItems }) {
                 "nav-link" + (!isActive ? " unselected" : "")
               }
             >
-              Home*
+              home*
             </NavLink>
           </li>
           <li>
@@ -26,7 +26,7 @@ function Navbar({ totalItems }) {
                 "nav-link" + (!isActive ? " unselected" : "")
               }
             >
-              Shop*
+              shop*
             </NavLink>
           </li>
           <li>
@@ -36,7 +36,7 @@ function Navbar({ totalItems }) {
                 "nav-link" + (!isActive ? " unselected" : "")
               }
             >
-              Cart*{totalItems > 0 && <sup>({totalItems})</sup>}
+              cart*{totalItems > 0 && <sup>({totalItems})</sup>}
             </NavLink>
           </li>
         </ul>

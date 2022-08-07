@@ -80,16 +80,16 @@ const ItemTile = ({
                 -
               </button>
             </div>
-            <div className={styles.buttonDiv}>
+            {/* <div className={styles.buttonDiv}>
               <button>item details*</button>
-            </div>
+            </div> */}
           </form>
         )}
         {!displayQuantity && (
           <div>
             <button onClick={handleAddToCart}>add to cart*</button>
 
-            <button>item details*</button>
+            {/* <button>item details*</button> */}
           </div>
         )}
       </div>

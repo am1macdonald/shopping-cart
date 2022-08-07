@@ -10,16 +10,16 @@ const Home = () => {
           <img src={heroImg} alt="Mego Lo Mart, Arlen Branch" />
         </div>
         <div className="container">
-          <h3 className="bottom-margin">Welcome to Mega-Lo-Mart</h3>
+          <h2 className="bottom-margin">Welcome<br /> to Mega Lo Mart</h2> 
           <blockquote>
-            At Mega Lo Mart, you're shopping for the rest of your life.
+            At Mega lo Mart, you're shopping for the rest of your life.
           </blockquote>
         </div>
       </div>
 
       <div className="hidden">
         <div>
-          <h6>Featured Sale</h6>
+          <h6>featured sale</h6>
           <p></p>
         </div>
         <div>

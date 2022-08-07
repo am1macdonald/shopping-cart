@@ -3,6 +3,7 @@ $softer-black: rgba(27, 22, 22, 0.5);
 $off-white: #faf9f6;
 $clear: rgba(0, 0, 0, 0);
 $red-brown: rgba(165, 42, 42, 0.85);
+$clickables: button, a;
 
 * {
   box-sizing: border-box;
@@ -55,6 +56,7 @@ $red-brown: rgba(165, 42, 42, 0.85);
 }
 
 .border-bottom {
+  padding-bottom: 0.1rem;
   border-bottom: solid $softer-black;
 }
 
@@ -127,7 +129,7 @@ nav::after {
 
 button {
   font-family: "Courier New", Courier, monospace;
-  color: rgba(165, 42, 42, 0.85);
+  color: $red-brown;
   font-size: 1.1rem;
   border: none;
   background-color: $clear;
@@ -135,12 +137,28 @@ button {
   cursor: pointer;
 }
 
+blockquote {
+  max-width: 70%;
+  text-align: center;
+}
+
+@each $thing in $clickables {
+  #{$thing}:hover:not([aria-current]) {
+    text-shadow: 2px 2px rgba(134, 37, 37, 0.151);
+    font-weight: 600;
+  }
+}
 img {
   max-width: 100%;
 }
 
+h2 {
+  font-size: max(1.23rem, 4vmin);
+  text-align: center;
+}
+
 h3 {
-  font-size: 1.23rem;
+  font-size: max(1.1rem, 2.6vmin);
 }
 
 input[type="number"] {
@@ -164,5 +182,14 @@ input[type="number"] {
     div {
       margin: 2vh 0 0 0;
     }
+  }
+
+  nav {
+    padding: 1vmin;
+  }
+
+  .brand {
+    max-width: 30%;
+    margin: 0 1vw;
   }
 }

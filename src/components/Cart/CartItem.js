@@ -33,18 +33,18 @@ const CartItem = ({ item, updateQuantity, removeItem }) => {
           <ul>
             {discountPercentage ? (
               <li>
-                Price: <s>${`${price}`}</s> $
+                price: <s>${`${price}`}</s> $
                 {Math.round(price * (1 - discountPercentage / 100))}
               </li>
             ) : (
-              <li>Price: ${`${price}`}</li>
+              <li>price: ${`${price}`}</li>
             )}
             {discountPercentage && (
-              <li>Discount: {`${Math.round(discountPercentage)}`}%</li>
+              <li>discount: {`${Math.round(discountPercentage)}`}%</li>
             )}
-            <li>In stock: {item.stock}</li>
+            <li>stock: {item.stock}</li>
             <li>
-              <label htmlFor="quantity">Quantity: </label>
+              <label htmlFor="quantity">quantity: </label>
               <input
                 className="no-spin"
                 type="number"
