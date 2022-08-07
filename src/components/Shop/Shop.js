@@ -2,23 +2,6 @@ import styles from "./shop.module.scss";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
-// const generatePrice = () => {
-//   return Math.random().toFixed(2) * 100 + 20;
-// };
-
-// const fakeAPI = () => {
-//   const products = [];
-//   for (let i = 0; i < 30; i++) {
-//     products.push({
-//       id: i,
-//       title: `product ${i}`,
-//       images: ["#"],
-//       price: generatePrice(),
-//     });
-//   }
-//   return products;
-// };
-
 const Shop = (props) => {
   const handleChange = (e) => {
     props.sort(e.target.value);
