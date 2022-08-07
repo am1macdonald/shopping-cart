@@ -62,7 +62,8 @@ $clear: rgba(0, 0, 0, 0);
     flex-direction: column;
   }
   .flexBottom {
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     height: 10vh;
   }
   .simpleBar {

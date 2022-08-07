@@ -10,6 +10,9 @@ $clear: rgba(0, 0, 0, 0);
   height: 70vh;
 }
 
+.noPadding {
+  padding: 0;
+}
 .itemTile {
   justify-content: space-between;
   box-sizing: border-box;
@@ -35,10 +38,11 @@ $clear: rgba(0, 0, 0, 0);
 .span {
   justify-content: start;
   width: 90%;
-  padding-bottom: 2vh;
+  padding: 2vh 0 0 0;
 
   select {
-    margin-left: 2vw;
+    margin-left: min(1rem, 2vw);
+    padding: 1vmin;
 
     border: none;
     background-color: $clear;

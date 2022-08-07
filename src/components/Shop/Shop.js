@@ -9,7 +9,7 @@ const Shop = (props) => {
 
   return (
     <div className="page">
-      <div className={`container`}>
+      <div className={`container ${styles.noPadding}`}>
         <span className={`flex-row ${styles.span}`}>
           <label htmlFor="sort">sort:</label>
           <select name="sort" id="sort" onChange={handleChange}>
