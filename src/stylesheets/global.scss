@@ -144,7 +144,7 @@ blockquote {
 
 @each $thing in $clickables {
   #{$thing}:hover:not([aria-current]) {
-    text-shadow: 2px 2px rgba(134, 37, 37, 0.151);
+    text-shadow: 2px 2px 15px rgba(197, 163, 163, 0.664);
     font-weight: 600;
   }
 }

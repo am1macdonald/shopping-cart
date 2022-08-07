@@ -159,7 +159,7 @@ function App() {
           />
           <Route
             path="/cart"
-            element={<Cart totalCost={getTotalCost}>{productsInCart}</Cart>}
+            element={<Cart totalCost={getTotalCost} checkCart={shoppingCart.length} emptyCart={() => setShoppingCart([])}>{productsInCart}</Cart>}
           />
         </Routes>
       </BrowserRouter>
