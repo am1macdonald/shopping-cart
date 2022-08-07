@@ -54,14 +54,16 @@ $clear: rgba(0, 0, 0, 0);
 @media only screen and (max-width: 690px) {
   .shopPage {
     grid-template-columns: 100%;
-    grid-template-rows: 80vh 5vh;
+    grid-template-rows: 80vh 10vh;
+    padding: 0;
+    justify-content: space-around;
   }
   .itemTile {
     flex-direction: column;
   }
   .flexBottom {
     justify-content: center;
-    height: 5vh;
+    height: 10vh;
   }
   .simpleBar {
     height: 68vh;
