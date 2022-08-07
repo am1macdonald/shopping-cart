@@ -43,7 +43,9 @@ const ItemTile = ({
 
       <div>
         <h4>{title}</h4>
-        <p>${price}</p>
+        <p>
+          $<s>{price}</s> ${Math.round(price * (1 - item.discountPercentage / 100))}
+        </p>
         {displayQuantity && (
           <form name={`form-${id}`} onSubmit={handleUpdate}>
             <div>
